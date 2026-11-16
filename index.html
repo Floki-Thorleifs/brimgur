@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="is">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brimrún & Dagur</title>
+  <meta name="description" content="Brimrún og Dagur ganga í hjónaband sumarið 2027.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23f7b9c4'/><stop offset='1' stop-color='%23f39a5b'/></linearGradient></defs><circle cx='50' cy='50' r='46' fill='url(%23g)'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fffdfb;
+      --ink: #3b2a2a;
+      --muted: #8a7471;
+      --pink: #f7b9c4;
+      --pink-soft: #fde8ec;
+      --peach: #f6c3a1;
+      --peach-deep: #e39a72;
+      --sage: #a8b89a;
+      --sage-deep: #6f8467;
+      --sage-soft: #eef2ea;
+      --line: #e6e9df;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Jost", system-ui, sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 4rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Miðnætursól — soft pink-to-peach sun */
+    .sun {
+      position: absolute;
+      width: min(72vw, 460px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: linear-gradient(180deg, var(--pink) 0%, #f9cdb8 60%, var(--peach) 100%);
+      opacity: .35;
+      filter: blur(2px);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -54%);
+      animation: rise 2.4s cubic-bezier(.2,.7,.2,1) both;
+    }
+
+    @keyframes rise {
+      from { transform: translate(-50%, -30%); opacity: 0; }
+      to   { transform: translate(-50%, -54%); opacity: .35; }
+    }
+
+    /* Sage hills on the horizon */
+    .hills {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 26svh;
+      pointer-events: none;
+    }
+    .hills svg { width: 100%; height: 100%; display: block; }
+
+    .hero-content { position: relative; animation: fade 1.6s .4s ease both; }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .eyebrow {
+      font-size: .78rem;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(3rem, 12vw, 6.5rem);
+      line-height: 1;
+      letter-spacing: -.01em;
+    }
+
+    h1 .amp {
+      display: block;
+      font-style: italic;
+      font-size: .5em;
+      color: var(--sage-deep);
+      margin: .25em 0;
+    }
+
+    .date {
+      margin-top: 2rem;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.25rem, 4vw, 1.6rem);
+      font-style: italic;
+    }
+
+    .place {
+      font-size: .9rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: .35rem;
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(transparent, var(--sage-deep));
+      z-index: 1;
+    }
+
+    /* ---------- Sections ---------- */
+    main { max-width: 640px; margin: 0 auto; padding: 0 1rem 5rem; }
+
+    section {
+      text-align: center;
+      padding: 4.5rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    section:first-child { border-top: none; }
+
+    .num {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic;
+      color: var(--sage-deep);
+      font-size: 1.1rem;
+    }
+
+    h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 7vw, 2.75rem);
+      margin: .25rem 0 1.25rem;
+    }
+
+    p { color: var(--ink); max-width: 46ch; margin: 0 auto; }
+    p + p { margin-top: 1rem; }
+    .small { font-size: .9rem; color: var(--muted); }
+
+    .detail {
+      margin: 1.75rem auto 0;
+      display: inline-block;
+      text-align: left;
+      font-size: .95rem;
+    }
+    .detail div { display: flex; gap: 1rem; }
+    .detail dt { width: 6.5rem; color: var(--muted); }
+    .detail dd { font-weight: 400; }
+
+    .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: .9rem 2.2rem;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--pink), var(--peach));
+      color: var(--ink);
+      box-shadow: 0 6px 20px -10px rgba(227, 154, 114, .6);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 26px -10px rgba(227, 154, 114, .7); }
+
+    .btn-ghost {
+      border: 1px solid var(--sage);
+      color: var(--sage-deep);
+      background: var(--sage-soft);
+    }
+    .btn-ghost:hover { background: #fff; transform: translateY(-2px); }
+
+    #gjafalisti .btn-ghost { border-color: var(--pink); background: var(--pink-soft); color: var(--ink); }
+
+    .btn:focus-visible { outline: 2px solid var(--sage-deep); outline-offset: 3px; }
+
+    footer {
+      text-align: center;
+      padding: 3.5rem 1rem 4rem;
+      color: var(--sage-deep);
+      background: var(--sage-soft);
+    }
+    footer .sig {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--ink);
+      margin-top: .5rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Við ætlum að gifta okkur</p>
+      <h1>Brimrún <span class="amp">&amp;</span> Dagur</h1>
+      <!-- TODO: settu inn rétta dagsetningu -->
+      <p class="date">Laugardaginn 00. júlí 2027</p>
+      <!-- TODO: settu inn staðinn -->
+      <p class="place">Staður, Ísland</p>
+    </div>
+    <div class="hills" aria-hidden="true">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="none">
+        <path d="M0 150 C 240 70, 420 90, 640 140 S 1080 60, 1440 120 L1440 260 L0 260 Z" fill="#c9d4bf" opacity=".55"/>
+        <path d="M0 200 C 300 130, 560 170, 820 190 S 1220 140, 1440 180 L1440 260 L0 260 Z" fill="#a8b89a" opacity=".55"/>
+        <path d="M0 240 C 360 210, 760 225, 1080 235 S 1340 220, 1440 230 L1440 260 L0 260 Z" fill="#fffdfb"/>
+      </svg>
+    </div>
+    <a class="scroll" href="#main" aria-label="Skruna niður"></a>
+  </header>
+
+  <main id="main">
+
+    <section id="velkomin">
+      <p>
+        Okkur þætti afar vænt um að fá að fagna þessum degi með ykkur.
+        Hér finnið þið allar helstu upplýsingar um brúðkaupið.
+      </p>
+    </section>
+
+    <section id="svar">
+      <span class="num">i.</span>
+      <h2>Svar óskast</h2>
+      <!-- TODO: settu inn svarfrest -->
+      <p>Vinsamlegast látið okkur vita hvort þið komist fyrir <strong>1. maí 2027</strong>.</p>
+      <!-- TODO: settu inn slóð á Google Form -->
+      <a class="btn btn-primary" href="https://forms.gle/XXXXXXXX" target="_blank" rel="noopener">Svara boðinu</a>
+    </section>
+
+    <section id="stadsetning">
+      <span class="num">ii.</span>
+      <h2>Staðsetning</h2>
+      <p>Athöfn og veisla fara fram á sama stað.</p>
+      <!-- TODO: uppfærðu upplýsingar -->
+      <dl class="detail">
+        <div><dt>Staður</dt><dd>Nafn staðar</dd></div>
+        <div><dt>Heimilisfang</dt><dd>Gata 1, 000 Bær</dd></div>
+        <div><dt>Athöfn</dt><dd>kl. 15:00</dd></div>
+        <div><dt>Veisla</dt><dd>kl. 18:00</dd></div>
+      </dl>
+      <br>
+      <!-- TODO: settu inn Google Maps slóð -->
+      <a class="btn btn-ghost" href="https://maps.google.com/?q=Reykjavik" target="_blank" rel="noopener">Sjá á korti</a>
+    </section>
+
+    <section id="gjafalisti">
+      <span class="num">iii.</span>
+      <h2>Gjafalisti</h2>
+      <p>Nærvera ykkar er okkur dýrmætasta gjöfin.</p>
+      <p>Fyrir þau sem vilja gleðja okkur höfum við tekið saman gjafalista.</p>
+      <!-- TODO: settu inn slóð á gjafalista -->
+      <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Skoða gjafalistann</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p class="small">Hlökkum til að sjá ykkur</p>
+    <p class="sig">B &amp; D</p>
+  </footer>
+
+</body>
+</html>
